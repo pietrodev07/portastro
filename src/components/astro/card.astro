@@ -1,0 +1,32 @@
+---
+import { cardClass } from "@styles/card";
+import { cn } from "@utils/cn";
+import { formatDate } from "@utils/formatDate";
+
+interface Props {
+  href?: string;
+  title?: string;
+  description?: string;
+  tags?: string[];
+  pubDate?: string;
+}
+
+const { title, description, href, tags, pubDate } = Astro.props;
+---
+
+<a class={cn(cardClass.card)} href={href} title={title}>
+  <div class={cn(cardClass.cardBody)}>
+    <p class={cn(cardClass.cardTitle)}>{title}</p>
+    <p class={cn(cardClass.cardDescription)}>{description}</p>
+  </div>
+  {
+    tags && (
+      <div class={cn(cardClass.cardTags)}>
+        {tags.map((tag: string) => (
+          <span class={cn(cardClass.cardTag)}>{tag}</span>
+        ))}
+      </div>
+    )
+  }
+  {pubDate && <span class={cn(cardClass.pubDate)}>{formatDate(pubDate)}</span>}
+</a>
