@@ -1,0 +1,14 @@
+---
+import { navigationClass } from "@styles/navigation";
+import { cn } from "@utils/cn";
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<nav class={cn(navigationClass.navbar)}>
+  <h1 class={cn(navigationClass.text)}>{label}</h1>
+</nav>
