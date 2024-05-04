@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon/components";
+import { cn } from "@utils/cn";
+import { linksClass } from "@styles/links";
+import type { Link } from "@types";
+
+interface Props {
+  links: Link[];
+}
+
+const { links } = Astro.props;
+---
+
+<div class={cn(linksClass.links)}>
+  {
+    links.map((link) => (
+      <a href={link.href} class={cn(linksClass.link)} title={link.label}>
+        <Icon name="external-link" width={20} height={20} />
+        <span class={cn(linksClass.linkText)}>{link.label}</span>
+      </a>
+    ))
+  }
+</div>
