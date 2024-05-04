@@ -1,0 +1,69 @@
+---
+layout: "@layouts/layout.astro"
+title: "home"
+description: "Hello, world!"
+---
+
+import Links from "@components/astro/links.astro";
+import Badge from "@components/astro/badge.astro";
+import Posts from "@components/astro/posts.astro";
+import Projects from "@components/astro/projects.astro";
+import RenderedAt from "@components/astro/rendered-at.astro";
+import LastCommit from "@components/astro/last-commit.astro";
+import Greeting from "@components/svelte/greeting.svelte";
+
+import { LINKS, PROJECTS } from "config";
+
+<Greeting client:load />
+
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut mauris et neque placerat congue. Nunc molestie pulvinar metus. Vivamus efficitur efficitur consequat. Nullam semper augue ac placerat tristique. Nulla ornare magna in enim finibus finibus. Morbi cursus ornare lacus, ac rhoncus diam blandit condimentum.
+
+<Badge
+  label="TypeScript"
+  type="typescript"
+  href="https://typescriptlang.org/"
+/>
+<Badge type="obsidian" href="https://obsidian.md/" />
+
+---
+
+<Links links={LINKS} />
+
+---
+
+## Blog
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Nunc ut mauris et neque placerat congue.
+Nunc molestie pulvinar metus. Vivamus efficitur efficitur consequat.
+
+<Posts />
+
+---
+
+## Projects
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Nunc ut mauris et neque placerat congue.
+Nunc molestie pulvinar metus. Vivamus efficitur efficitur consequat.
+
+<Projects projects={PROJECTS} />
+
+---
+
+This website was built mainly using
+<Badge type="astro" href="https://astro.build/" />,
+<Badge type="svelte" href="https://svelte.dev/" /> and
+<Badge type="tailwindcss" href="https://tailwindcss.com" label="TailwindCSS" />.
+The entire source code can be found on [GitHub](https://github.com/pietrodev07/www)
+under the [MIT](https://github.com/gigantino/www/blob/main/LICENSE) license. 
+
+---
+
+_Powered by [portastro template](https://portastro.vercel.app)._
+
+_Statically rendered on the <RenderedAt />._
+
+{/* _Last Commit <LastCommit user="user" repo="repo" />._ */}
