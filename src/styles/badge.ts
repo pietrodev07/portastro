@@ -1,0 +1,21 @@
+export const badgeClass = {
+  container: [
+    "inline-flex",
+    "items-center",
+    "gap-1",
+    "rounded",
+    "border",
+    "border-zinc-200",
+    "bg-zinc-50",
+    "p-1",
+    "text-sm",
+    "leading-4",
+    "text-neutral-900",
+    "no-underline",
+    "hover:underline",
+    "dark:border-zinc-700",
+    "dark:bg-zinc-800",
+    "dark:text-zinc-100",
+  ],
+  text: ["capitalize"],
+};

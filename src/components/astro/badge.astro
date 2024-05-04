@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+import { cn } from "@utils/cn";
+import { badgeClass } from "@styles/badge";
+
+interface Props {
+  type: string;
+  href: string;
+  label?: string;
+}
+
+const { type, href, label } = Astro.props;
+---
+
+<a class={cn(badgeClass.container)} title={label} href={href}>
+  <Icon name={type} height={12} width={12} />
+  <span class={cn(badgeClass.text)}>{label || type}</span>
+</a>
