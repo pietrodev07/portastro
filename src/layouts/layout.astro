@@ -1,0 +1,61 @@
+---
+import Navigation from "@components/astro/navigation.astro";
+import { SITE } from "config";
+import type { Site } from "@types";
+import { layoutClass } from "@styles/layout"
+import { cn } from "@utils/cn";
+
+export interface Props extends Site {}
+
+const {
+  title = SITE.title,
+  author = SITE.author,
+  description = SITE.description,
+  ogLocale = SITE.ogImage,
+  ogUrl = SITE.ogUrl,
+  ogSiteName = SITE.ogSiteName,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" transition:animate="fade">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- General Meta Tags -->
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width" />
+
+    <!--Open Graph Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content={ogSiteName} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="base.css">
+
+    <title>{title}</title>
+  </head>
+  <body class={cn(layoutClass.body)}>
+    <Navigation label="pietrodev07" />
+    
+    <main class={cn(layoutClass.main)}>
+      <slot />
+      {
+        Astro.url.pathname != "/" && (
+          <a href="/" title="Back to home">
+            <button class={cn(layoutClass.backButton)}>
+              {"< Homepage"}
+            </button>
+          </a>
+        )
+      }
+    </main>
+  </body>
+</html>
