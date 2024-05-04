@@ -8,3 +8,17 @@
     src: url(/fonts/BalooDa2.ttf) format("ttf");
   }
 }
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  @apply rounded-xl bg-white dark:bg-zinc-900;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-slate-400 dark:bg-zinc-800;
+  border-radius: 20px;
+}
