@@ -1,0 +1,18 @@
+---
+import { lastCommitClass } from "@styles/last-commit";
+import { getLastCommit } from "@utils/getLastCommit";
+import { cn } from "@utils/cn";
+
+interface Props {
+  user: string;
+  repo: string;
+}
+
+const { user, repo } = Astro.props;
+
+const commit = await getLastCommit(user, repo);
+---
+
+<span class={cn(lastCommitClass.commit)}>
+  #{String(commit.sha || "000000").substring(0, 5)}
+</span>
