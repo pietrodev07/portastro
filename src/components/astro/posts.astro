@@ -1,0 +1,28 @@
+---
+import Card from "./card.astro";
+import { cn } from "@utils/cn";
+import { postsClass } from "@styles/posts";
+
+const allPosts = await Astro.glob("../../pages/blog/*.mdx");
+---
+
+<div class={cn(postsClass.posts)}>
+  {
+    allPosts
+      .sort((a, b) => {
+        return (
+          new Date(b.frontmatter.pubDate).getTime() -
+          new Date(a.frontmatter.pubDate).getTime()
+        );
+      })
+      .map((post) => (
+        <Card
+          href={post.url}
+          title={post.frontmatter.title}
+          description={post.frontmatter.description}
+          tags={post.frontmatter.tags}
+          pubDate={post.frontmatter.pubDate}
+        />
+      ))
+  }
+</div>
