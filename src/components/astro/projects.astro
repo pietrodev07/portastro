@@ -1,0 +1,25 @@
+---
+import Card from "./card.astro";
+import { cn } from "@utils/cn";
+import { projectsClass } from "@styles/projects";
+import type { Project } from "@types";
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class={cn(projectsClass.projects)}>
+  {
+    projects.map((project) => (
+      <Card
+        href={project.href}
+        title={project.title}
+        description={project.description}
+        tags={project.tags}
+      />
+    ))
+  }
+</div>
