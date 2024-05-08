@@ -7,5 +7,12 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte(), mdx(), tailwind(), icon()],
+  integrations: [
+    svelte(),
+    mdx(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    icon(),
+  ],
 });
